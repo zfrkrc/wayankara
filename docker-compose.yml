@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   waycoffee-web:
     build: .
     container_name: waycoffee-web
     ports:
-      - "172.16.16.17:8888:80"
+      - "172.16.16.200:2223:80"
     volumes:
       - ./index.html:/usr/share/nginx/html/index.html:ro
       - ./robots.txt:/usr/share/nginx/html/robots.txt:ro
@@ -13,13 +11,9 @@ services:
     restart: unless-stopped
     networks:
       - waycoffee-net
-    healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
 networks:
   waycoffee-net:
     driver: bridge
     name: waycoffee-net
+
