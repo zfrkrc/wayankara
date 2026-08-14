@@ -1,0 +1,178 @@
+{
+  "version": "1.0.0",
+  "schema_version": 1,
+  "project": {
+    "name": "wayankara",
+    "is_monorepo": false,
+    "total_files": 4,
+    "entry_points": [],
+    "tech_stack": [
+      {
+        "name": "Docker",
+        "version": null,
+        "category": "infra"
+      },
+      {
+        "name": "Docker Compose",
+        "version": null,
+        "category": "infra"
+      }
+    ],
+    "entry_candidates": [],
+    "graph_mode": "structural"
+  },
+  "nodes": [
+    {
+      "id": "file:.claude/CLAUDE.md",
+      "type": "document",
+      "filePath": ".claude/CLAUDE.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 161,
+      "complexity": "moderate",
+      "pagerank": 0.25,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Repository instructions and context for AI coding agents."
+    },
+    {
+      "id": "file:.mcp.json",
+      "type": "config",
+      "filePath": ".mcp.json",
+      "language": "json",
+      "symbolCount": 0,
+      "lineCount": 7,
+      "complexity": "simple",
+      "pagerank": 0.25,
+      "communityId": 1,
+      "tags": [
+        "config"
+      ],
+      "summary": "Configuration file: .mcp.json."
+    },
+    {
+      "id": "file:Dockerfile",
+      "type": "service",
+      "filePath": "Dockerfile",
+      "language": "dockerfile",
+      "symbolCount": 0,
+      "lineCount": 13,
+      "complexity": "simple",
+      "pagerank": 0.25,
+      "communityId": 2,
+      "tags": [
+        "config",
+        "infra"
+      ],
+      "summary": "Container image build definition."
+    },
+    {
+      "id": "file:docker-compose.yml",
+      "type": "service",
+      "filePath": "docker-compose.yml",
+      "language": "yaml",
+      "symbolCount": 0,
+      "lineCount": 10,
+      "complexity": "simple",
+      "pagerank": 0.25,
+      "communityId": 3,
+      "tags": [
+        "config",
+        "infra"
+      ],
+      "summary": "Multi-container service orchestration for local development."
+    }
+  ],
+  "edges": [],
+  "layers": [
+    {
+      "id": "layer:application",
+      "name": "Application",
+      "description": "",
+      "nodeIds": [
+        "file:.mcp.json",
+        "file:Dockerfile",
+        "file:docker-compose.yml"
+      ],
+      "display_order": 0,
+      "order_basis": "canonical"
+    },
+    {
+      "id": "layer:config",
+      "name": "Config",
+      "description": "",
+      "nodeIds": [
+        "file:.claude/CLAUDE.md"
+      ],
+      "display_order": 1,
+      "order_basis": "canonical"
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "target_path": "wayankara",
+      "page_type": "repo_overview",
+      "title": "Repository Overview",
+      "depth": 0,
+      "kind": "overview",
+      "reason": "Start here for the end-to-end picture before diving into the code.",
+      "layer_id": null
+    },
+    {
+      "order": 2,
+      "target_path": "Dockerfile",
+      "page_type": "file_page",
+      "title": "Dockerfile",
+      "depth": 0,
+      "kind": "code",
+      "reason": "The best-connected file by the evidence available (change history and references). Import analysis isn't supported for Dockerfile yet, so the walk follows the repo's structure.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 3,
+      "target_path": "docker-compose.yml",
+      "page_type": "file_page",
+      "title": "docker-compose.yml",
+      "depth": 0,
+      "kind": "code",
+      "reason": "The face of the repository root \u2014 1 code file lives here.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 4,
+      "target_path": "Dockerfile",
+      "page_type": "infra_page",
+      "title": "Dockerfile",
+      "depth": 1,
+      "kind": "infra",
+      "reason": "How the system above is configured, built, or deployed.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 5,
+      "target_path": "docker-compose.yml",
+      "page_type": "infra_page",
+      "title": "docker-compose.yml",
+      "depth": 1,
+      "kind": "infra",
+      "reason": "How the system above is configured, built, or deployed.",
+      "layer_id": "layer:application"
+    }
+  ],
+  "modules": [
+    {
+      "id": "module:application",
+      "name": "Application",
+      "path": "",
+      "layerId": "layer:application",
+      "nodeIds": [
+        "file:.mcp.json",
+        "file:Dockerfile",
+        "file:docker-compose.yml"
+      ],
+      "wholeLayer": true,
+      "language": "dockerfile"
+    }
+  ]
+}

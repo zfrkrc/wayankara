@@ -953,13 +953,26 @@
       transform: translateY(0);
     }
 
+    .nav-toggle { display: none; background: none; border: none; color: var(--cream, #F5EFE4); font-size: 1.6rem; cursor: pointer; padding: 4px 8px; line-height: 1; }
+
     @media (max-width: 900px) {
       nav {
         padding: 1.5rem 2rem;
+        position: relative;
+      }
+
+      .nav-toggle {
+        display: block;
       }
 
       .nav-links {
         display: none;
+      }
+
+      .nav-links.open {
+        display: flex; flex-direction: column; gap: 1.5rem;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--espresso, #1A1410); padding: 2rem; z-index: 600;
       }
 
       section {
@@ -1048,12 +1061,13 @@
       </svg>
       <span class="logo-text">Way Coffee</span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#hikaye">Hikayemiz</a></li>
       <li><a href="#menu">Menü</a></li>
       <li><a href="#konum">Konum</a></li>
       <li><a href="#iletisim">İletişim</a></li>
     </ul>
+    <button class="nav-toggle" aria-label="Menü" aria-expanded="false" aria-controls="navLinks">☰</button>
   </nav>
 
   <section class="hero">
@@ -1392,6 +1406,20 @@
     // Smooth cursor ring follow
     (function loop() {
       requestAnimationFrame(loop);
+    })();
+  </script>
+  <script>
+    (function(){
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.getElementById('navLinks');
+      if(!toggle || !links) return;
+      toggle.addEventListener('click', function(){
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+      });
     })();
   </script>
 </body>
