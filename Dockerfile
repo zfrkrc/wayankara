@@ -1,4 +1,6 @@
 FROM nginx:alpine
+# Güvenlik: build'de OS paketlerini güncelle (Trivy fixable)
+RUN apk -U upgrade --no-cache
 
 # Nginx config gömülü geliyor, dışarıdan dosya gerekmez
 RUN printf 'server {\n\
